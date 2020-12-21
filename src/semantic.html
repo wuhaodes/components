@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>语义化</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+      }
+
+      body * {
+        box-sizing: border-box;
+      }
+
+      header {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+      }
+
+      nav {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      nav span {
+        padding: 10px 20px;
+        border: 1px solid #eee;
+        color: #ffffff;
+        background-color: #666;
+        cursor: pointer;
+      }
+
+      nav span:hover {
+        background-color: #999999;
+        color: #cccccc;
+      }
+
+      .left {
+        background-color: green;
+        float: left;
+        width: calc(100% - 200px);
+      }
+
+      .right {
+        width: 200px;
+        background-color: yellow;
+        float: right;
+      }
+
+      .right::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <header>语义化</header>
+    <nav>
+      <span>标签一</span>
+      <span>标签二</span>
+      <span>标签三</span>
+      <span>标签四</span>
+    </nav>
+    <section class="left">
+      <header>左侧标签栏</header>
+      <article>
+        <header>左侧文章1</header>
+        <p>段落一</p>
+        <p>段落二</p>
+        <aside>段落二右侧</aside>
+        <footer>左侧文章1页脚</footer>
+      </article>
+      <article>
+        <header>左侧文章2</header>
+        <p>段落一</p>
+        <p>段落二</p>
+        <footer>左侧文章2页脚</footer>
+      </article>
+      <footer>左侧页脚</footer>
+    </section>
+    <section class="right">
+      <header>右侧标题</header>
+      <nav>标题</nav>
+    </section>
+    <p>aaa</p>
+  </body>
+</html>

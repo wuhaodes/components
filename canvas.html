@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Canvas</title>
+    <style>
+      .flex {
+        width: 600px;
+        margin: 50px auto;
+        background-color: #aaa;
+        background-image: linear-gradient(
+            transparent,
+            transparent 50%,
+            rgba(55, 110, 176, 0.3) 50%
+          ),
+          linear-gradient(
+            to right,
+            transparent,
+            transparent 50%,
+            rgba(55, 110, 176, 0.5) 50%
+          );
+        background-size: 40px 40px;
+      }
+    </style>
+    <script>
+      function CTX(id) {
+        const dom = document.getElementById(id);
+        console.log("dom", dom);
+        if (!dom) {
+          return undefined;
+        }
+        return dom.getContext("2d");
+      }
+
+      function draw(id) {
+        const ctx = CTX(id);
+        console.log("ctx", ctx);
+        if (!ctx) {
+          return;
+        }
+        ctx.beginPath();
+        ctx.moveTo(70, 140);
+        ctx.lineTo(140, 70);
+        ctx.lineTo(140, 300);
+        ctx.lineTo(300, 360);
+        ctx.lineTo(260, 200);
+        ctx.lineTo(400, 80);
+        ctx.lineTo(70, 140);
+        ctx.stroke();
+        ctx.fillStyle = "Pink";
+        ctx.beginPath();
+        ctx.arc(350, 230, 80, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      window.onload = function() {
+        draw("canvas");
+      };
+    </script>
+  </head>
+  <body>
+    <div class="flex">
+      <canvas id="canvas" width="600" height="400"></canvas>
+    </div>
+  </body>
+</html>

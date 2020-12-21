@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>拖动</title>
+    <style>
+      .flex {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 306px;
+        border: 1px solid #ccc;
+      }
+
+      img {
+        width: 50px;
+        user-select: none;
+      }
+
+      #box,
+      #box1,
+      #box2,
+      #box3,
+      #box4,
+      #box5,
+      #box6,
+      #box7,
+      #box8 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <script>
+      //拖
+      function drag(event) {
+        event.dataTransfer.setData("Text", event.target.id);
+      }
+      // 放
+      function drop(event) {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        const img = document.getElementById(data);
+        const img1 = document.createElement("img");
+        if (!img) {
+          return;
+        }
+        for (let obj of img.attributes) {
+          if (obj.name != "src") {
+            continue;
+          }
+          img1[obj.name] = obj.value;
+        }
+
+        if (
+          event.target.childNodes.length >= 1 ||
+          event.target.nodeName == "IMG"
+        ) {
+          return;
+        }
+
+        event.target.appendChild(img1);
+      }
+
+      function allowDrop(event) {
+        event.preventDefault(); //取消事件默认行为
+      }
+    </script>
+  </head>
+  <body>
+    <div class="flex" style="margin-top: 30px;">
+      <div id="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="box8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div
+      style="display: flex; align-items: center; margin-top: 30px; width: 300px; justify-content:space-between;"
+    >
+      <img
+        id="drag1"
+        src="/img/1.jpeg"
+        draggable="true"
+        ondragstart="drag(event)"
+        style="cursor: pointer;"
+      />
+      <img
+        id="drag2"
+        src="/img/2.jpeg"
+        draggable="true"
+        ondragstart="drag(event)"
+        style="cursor: pointer;"
+      />
+    </div>
+  </body>
+</html>
