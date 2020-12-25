@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Event loop</title>
+    <script>
+      function sleep(n) {
+        for (let i = 0; i < n; i++) {
+          console.log(i);
+        }
+      }
+
+      let i = 0;
+
+      setInterval(() => {
+        console.log(i.toString(16).padStart(6, 0));
+        document.bgColor = `#${i.toString(16).padStart(6, 0)}`;
+        i++;
+      }, 1000);
+      // 卡死浏览器 1000000
+      // sleep(10000);
+    </script>
+  </head>
+  <body>
+    <div>run event loop</div>
+  </body>
+</html>
